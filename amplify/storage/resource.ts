@@ -1,4 +1,4 @@
-// amplify/storage/resource.ts
+// amplify/storage/resource.ts - SIMPLIFIED
 import { defineStorage } from '@aws-amplify/backend';
 
 export const storage = defineStorage({
@@ -9,4 +9,5 @@ export const storage = defineStorage({
       allow.entity('identity').to(['read', 'write', 'delete'])
     ]
   })
+  // ✅ No triggers needed - processing happens in frontend
 });

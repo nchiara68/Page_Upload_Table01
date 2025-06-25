@@ -1,4 +1,4 @@
-// components/InvoiceViewer.tsx - Updated with New Theme Colors
+// components/InvoiceViewer.tsx - Updated with New Theme Colors & Fixed ESLint Error
 import React, { useState, useEffect, useMemo } from 'react';
 import { generateClient } from 'aws-amplify/data';
 import type { Schema } from '../../amplify/data/resource';
@@ -82,7 +82,7 @@ export const InvoiceViewer: React.FC = () => {
 
   // Filter and sort invoices
   const filteredAndSortedInvoices = useMemo(() => {
-    let filtered = invoices.filter(invoice => {
+    const filtered = invoices.filter(invoice => {
       // Currency filter
       if (filters.currency !== 'all' && invoice.currency !== filters.currency) {
         return false;
@@ -314,7 +314,7 @@ export const InvoiceViewer: React.FC = () => {
             <select 
               value={filters.dateRange} 
               onChange={(e) => {
-                setFilters({...filters, dateRange: e.target.value as any});
+                setFilters({...filters, dateRange: e.target.value as 'all' | 'last7days' | 'last30days' | 'last6months'});
                 setCurrentPage(1);
               }}
             >
